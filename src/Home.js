@@ -1,10 +1,4 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
 import Preview from './Preview';
 import data from './data.json';
 
