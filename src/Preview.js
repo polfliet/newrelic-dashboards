@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
         <div className="col-md-4">
             <div className="card mb-4 shadow-sm">
-                <img src={ "data/dashboards/" + this.props.dashboard.name + "/screenshot.png"} className="card-img-top" alt="..." />
+                <img src={ "data/" + this.props.dashboard.name + "/screenshot.png"} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{ this.props.dashboard.config.name }</h5>
                     <div className="d-flex justify-content-between align-items-center">
