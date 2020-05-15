@@ -1,27 +1,24 @@
 import React from 'react';
-import Preview from './Preview';
-import data from './data.json';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
+import Home from './Home';
+import View from './View';
 
 class App extends React.Component {
 
-    constructor(props) {
-        super(props);
-
-        console.log('data', data);
-    }
-
     render() {
         return (
-            <div className="album py-5 bg-light">
-                <div className="container" id="root">
-                    <div className="row">
-                    {data.dashboards.map((dashboard, i) => {
-                        return (<Preview dashboard={dashboard} />)
-                    })}
-                    </div>
-                </div>
-            </div>
-        );
+            <Router>
+                <Switch>
+                    <Route path="/view/:handle" component={View} />
+                    <Route path="/" component={Home} />
+                </Switch>
+            </Router>
+        )
     }
 
 }

@@ -1,4 +1,11 @@
 import React from 'react';
+import Datasource from './Datasource';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 class App extends React.Component {
 
@@ -15,9 +22,10 @@ class App extends React.Component {
                 <img src={ "data/" + this.props.dashboard.name + "/screenshot.png"} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{ this.props.dashboard.config.name }</h5>
+                    <p><Datasource sources={this.props.dashboard.dataSources} /></p>
                     <div className="d-flex justify-content-between align-items-center">
                         <div className="btn-group">
-                            <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
+                            <Link className="btn btn-sm btn-outline-secondary" to={"/view/" + this.props.dashboard.name}>View</Link>
                         </div>
                         <small className="text-muted">Created by: { this.props.dashboard.config.author }</small>
                     </div>
