@@ -14,13 +14,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      
+
     - name: Use Node.js 12.x
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
 
-#    - run: npm ci
+    - run: bash build.sh
+
+    - run: yarn run build
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
