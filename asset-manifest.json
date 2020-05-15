@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/newrelic-dashboards/static/js/main.e163af04.chunk.js",
-    "main.js.map": "/newrelic-dashboards/static/js/main.e163af04.chunk.js.map",
+    "main.js": "/newrelic-dashboards/static/js/main.07fd883e.chunk.js",
+    "main.js.map": "/newrelic-dashboards/static/js/main.07fd883e.chunk.js.map",
     "runtime-main.js": "/newrelic-dashboards/static/js/runtime-main.57942c54.js",
     "runtime-main.js.map": "/newrelic-dashboards/static/js/runtime-main.57942c54.js.map",
     "static/js/2.669fb115.chunk.js": "/newrelic-dashboards/static/js/2.669fb115.chunk.js",
     "static/js/2.669fb115.chunk.js.map": "/newrelic-dashboards/static/js/2.669fb115.chunk.js.map",
     "index.html": "/newrelic-dashboards/index.html",
-    "precache-manifest.d3e671b24244507cb279adbf620ee8c8.js": "/newrelic-dashboards/precache-manifest.d3e671b24244507cb279adbf620ee8c8.js",
+    "precache-manifest.8a0e8040e5525a0854862d76e917e5f1.js": "/newrelic-dashboards/precache-manifest.8a0e8040e5525a0854862d76e917e5f1.js",
     "service-worker.js": "/newrelic-dashboards/service-worker.js",
     "static/js/2.669fb115.chunk.js.LICENSE.txt": "/newrelic-dashboards/static/js/2.669fb115.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.57942c54.js",
     "static/js/2.669fb115.chunk.js",
-    "static/js/main.e163af04.chunk.js"
+    "static/js/main.07fd883e.chunk.js"
   ]
 }

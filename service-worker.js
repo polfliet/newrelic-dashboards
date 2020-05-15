@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/newrelic-dashboards/precache-manifest.d3e671b24244507cb279adbf620ee8c8.js"
+  "/newrelic-dashboards/precache-manifest.8a0e8040e5525a0854862d76e917e5f1.js"
 );
 
 self.addEventListener('message', (event) => {
