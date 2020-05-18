@@ -17,9 +17,9 @@ class App extends React.Component {
 
   render() {
     return (
-        <div className="album py-5 bg-light">
+        <div className="album py-2">
             <div className="container" id="root">
-                <div className="row">
+                <div className="row py-4">
                     <h2>{ this.state.dashboard.config.name }</h2>
                 </div>
                 <div className="row">
@@ -32,7 +32,7 @@ class App extends React.Component {
                         <p><button className="btn btn-primary">Copy to clipboard (TODO)</button></p>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row py-4">
                     <h3>Dashboards</h3>
                 </div>
                 <div class="row">
