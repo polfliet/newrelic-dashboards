@@ -12,6 +12,22 @@ class App extends React.Component {
         'dashboard': data.dashboards.find(element => element.name === props.match.params.handle),
         'visible': 0,
     };
+
+    this.copy = this.copy.bind(this);
+  }
+
+  copy(file) {
+    fetch('./data/' + file.location).then(response => response.json()).then((text) => {
+        navigator.permissions.query({name: "clipboard-write"}).then(result => {
+            if (result.state === "granted" || result.state === "prompt") {
+                navigator.clipboard.writeText(JSON.stringify(text)).then(function() {
+                    alert('Dashboard copied to clipboard');
+                }, function() {
+                    alert('Failed to copy dashboard to clipboard');
+                });
+            }
+        });
+    });
   }
 
   render() {
@@ -22,16 +38,12 @@ class App extends React.Component {
                     <h2>{ this.state.dashboard.config.name }</h2>
                 </div>
                 <div className="row">
-                    <div className="col-8">
+                    <div className="col-12">
                         <p><b>Created by:</b> { this.state.dashboard.config.author }</p>
                         <Datasource sources={this.state.dashboard.sources} />
                         <h5 className="pt-4">Installation instructions</h5>
                         <p>This dashboard requires the following New Relic products:</p>
                         <InstallationInstructions sources={this.state.dashboard.sources} />
-                    </div>
-                    <div className="col-4">
-                        <p><button className="btn btn-primary">Import (TODO)</button></p>
-                        <p><button className="btn btn-primary">Copy to clipboard (TODO)</button></p>
                     </div>
                 </div>
                 <div className="row py-4">
@@ -55,8 +67,15 @@ class App extends React.Component {
                         if (this.state.visible !== i) return ( <span key={file.name}></span> );
                         return (
                             <div className="row px-4 py-2 dashboard-info" key={file.name}>
-                                <h4>Screenshot</h4>
-                                <img src={ "data/" + this.state.dashboard.name + "/" + this.state.dashboard.screenshots[i]} className="card-img-top" alt="..." />
+                                <div className="col-12 py-3 text-right">
+                                    <div className="btn-group" role="group" aria-label="Basic example">
+                                        <button className="btn btn-primary">Import to New Relic (TODO)</button>
+                                        <button className="btn btn-info" onClick={(event) => { this.copy(file) }}>Copy to clipboard</button>
+                                    </div>
+                                </div>
+                                <div className="col-12">
+                                    <img src={ "data/" + this.state.dashboard.name + "/" + this.state.dashboard.screenshots[i]} className="card-img-top" alt="..." />
+                                </div>
                             </div>
                         )
                     })}

@@ -33,7 +33,7 @@ function process(element) {
         let data = JSON.parse(fs.readFileSync(file))
         files.push({
             name: data.title,
-            file
+            location: element + '/dashboard.json'
         });
         dashboardData.push(data);
     } else {
@@ -44,7 +44,7 @@ function process(element) {
             let data = JSON.parse(fs.readFileSync(file))
             files.push({
                 name: data.title,
-                file
+                location: element + '/dashboard_' + counter + '.json'
             });
             dashboardData.push(data);
             counter++;
