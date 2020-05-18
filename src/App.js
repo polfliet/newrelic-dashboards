@@ -4,8 +4,8 @@ import {
     Switch,
     Route
   } from "react-router-dom";
-import Home from './Home';
-import View from './View';
+import Home from './Pages/Home';
+import View from './Pages/View';
 
 class App extends React.Component {
 

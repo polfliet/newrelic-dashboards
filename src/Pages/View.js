@@ -1,7 +1,7 @@
 import React from 'react';
-import Datasource from './Datasource';
-import InstallationInstructions from './InstallationInstructions';
-import data from './data.json';
+import Datasource from '../Partials/Datasource';
+import InstallationInstructions from '../Partials/InstallationInstructions';
+import data from '../data.json';
 
 class App extends React.Component {
 

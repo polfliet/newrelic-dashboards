@@ -1,6 +1,6 @@
 import React from 'react';
-import Preview from './Preview';
-import data from './data.json';
+import Preview from '../Partials/Preview';
+import data from '../data.json';
 
 class Home extends React.Component {
 
