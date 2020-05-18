@@ -8,8 +8,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log('view', props.match.params.handle, data);
-
     this.state = {
         'dashboard': data.dashboards.find(element => element.name === props.match.params.handle),
         'visible': 0,
@@ -26,8 +24,8 @@ class App extends React.Component {
                 <div className="row">
                     <div className="col-8">
                         <p><b>Created by:</b> { this.state.dashboard.config.author }</p>
-                        <p><b>Sources:</b> <Datasource sources={this.state.dashboard.sources} /></p>
-                        <h5>Installation instructions</h5>
+                        <Datasource sources={this.state.dashboard.sources} />
+                        <h5 className="pt-4">Installation instructions</h5>
                         <p>This dashboard requires the following New Relic products:</p>
                         <InstallationInstructions sources={this.state.dashboard.sources} />
                     </div>
@@ -36,27 +34,27 @@ class App extends React.Component {
                         <p><button className="btn btn-primary">Copy to clipboard (TODO)</button></p>
                     </div>
                 </div>
-                <div class="row py-4">
+                <div className="row py-4">
                     <h3>Dashboards</h3>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <ul class="nav nav-tabs nav-fill">
+                <div className="row">
+                    <div className="col-12">
+                        <ul className="nav nav-tabs nav-fill">
                             {this.state.dashboard.files.map((file, i) => {
                                 let selected = '';
                                 if (this.state.visible === i) selected = 'active';
                                 return (
-                                    <li class="nav-item">
-                                        <a class={"nav-link " + selected} onClick={(event) => { this.setState({visible: i}) }}>{file.name}</a>
+                                    <li className="nav-item" key={file.name}>
+                                        <button className={"nav-link " + selected} onClick={(event) => { this.setState({visible: i}) }}>{file.name}</button>
                                     </li>
                                 )
                             })}
                         </ul>
                     </div>
                     {this.state.dashboard.files.map((file, i) => {
-                        if (this.state.visible !== i) return;
+                        if (this.state.visible !== i) return ( <span key={file.name}></span> );
                         return (
-                            <div className="row px-4 py-2 dashboard-info">
+                            <div className="row px-4 py-2 dashboard-info" key={file.name}>
                                 <h4>Screenshot</h4>
                                 <img src={ "data/" + this.state.dashboard.name + "/" + this.state.dashboard.screenshots[i]} className="card-img-top" alt="..." />
                             </div>
