@@ -1,6 +1,9 @@
 import React from 'react';
 import Datasource from '../Partials/Datasource';
 import InstallationInstructions from '../Partials/InstallationInstructions';
+import {
+    Link
+  } from "react-router-dom";
 import data from '../data.json';
 
 class App extends React.Component {
@@ -35,7 +38,14 @@ class App extends React.Component {
         <div className="album py-2">
             <div className="container" id="root">
                 <div className="row py-4">
-                    <h2>{ this.state.dashboard.config.name }</h2>
+                    <div className="col-8">
+                        <h2>{ this.state.dashboard.config.name }</h2>
+                    </div>
+                    <div className="col-4 text-right">
+                        <Link className="btn btn-default" to={"/"}>
+                            Back to homepage
+                        </Link>
+                    </div>
                 </div>
                 <div className="row">
                     <div className="col-12">
