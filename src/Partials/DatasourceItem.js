@@ -22,7 +22,7 @@ class DatasourceItem extends React.Component {
 
   render() {
     return (
-      <span class="badge badge-primary">{this.state.name}</span>
+      <span class="badge badge-dark">{this.state.name}</span>
     );
   }
 
