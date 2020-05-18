@@ -10,6 +10,7 @@ rm -rfv public/data/*
 echo ">"
 echo "> Copying dashboard data"
 echo ">"
+mkdir public/data || true
 cp -v -R dashboards/* public/data
 
 # Generate summary file
