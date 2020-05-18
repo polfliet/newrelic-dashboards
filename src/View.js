@@ -1,5 +1,6 @@
 import React from 'react';
 import Datasource from './Datasource';
+import InstallationInstructions from './InstallationInstructions';
 import data from './data.json';
 
 class App extends React.Component {
@@ -26,6 +27,9 @@ class App extends React.Component {
                     <div className="col-8">
                         <p><b>Created by:</b> { this.state.dashboard.config.author }</p>
                         <p><b>Sources:</b> <Datasource sources={this.state.dashboard.sources} /></p>
+                        <h5>Installation instructions</h5>
+                        <p>This dashboard requires the following New Relic products:</p>
+                        <InstallationInstructions sources={this.state.dashboard.sources} />
                     </div>
                     <div className="col-4">
                         <p><button className="btn btn-primary">Import (TODO)</button></p>
