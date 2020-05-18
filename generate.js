@@ -25,17 +25,56 @@ function process(element) {
     let config = JSON.parse(fs.readFileSync('dashboards/' + element + '/config.json'));
 
     // Read dashboard data
-    let dashboardData = JSON.parse(fs.readFileSync('dashboards/' + element + '/dashboard.json'));
-    let dataSources = [];
-    dashboardData.widgets.forEach((widget) => {
-        dataSources = dataSources.concat(widget.event_types).unique();
+    let dashboardData = []
+    let files = [];
+    let file = 'dashboards/' + element + '/dashboard.json'
+    if (fs.existsSync(file)) {
+        // Single dashboard mode
+        let data = JSON.parse(fs.readFileSync(file))
+        files.push({
+            name: data.title,
+            file
+        });
+        dashboardData.push(data);
+    } else {
+        // Multi dashboard mode
+        let counter = 1;
+        let file = 'dashboards/' + element + '/dashboard_' + counter + '.json';
+        while(fs.existsSync(file)) {
+            let data = JSON.parse(fs.readFileSync(file))
+            files.push({
+                name: data.title,
+                file
+            });
+            dashboardData.push(data);
+            counter++;
+            file = 'dashboards/' + element + '/dashboard_' + counter + '.json'
+        }
+    }
+
+    // Check screenshots
+    let screenshots = [];
+    fs.readdirSync('dashboards/' + element).forEach((file) => {
+        if (file.endsWith('.png')) {
+            screenshots.push(file);
+        }
+    });
+
+    // Get event_types from all dashboards
+    let sources = [];
+    dashboardData.forEach((dashboard) => {
+        dashboard.widgets.forEach((widget) => {
+            sources = sources.concat(widget.event_types).unique().filter((value) => value !== null);
+        });
     });
 
     // Add to array
     dashboards.push({
         name: element,
-        dataSources,
-        config
+        sources,
+        config,
+        files: files,
+        screenshots,
     });
 }
 
