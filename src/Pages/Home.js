@@ -7,24 +7,51 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log('data', data);
+        this.state = {
+            search: '',
+        }
+
+        this.setSearch = this.setSearch.bind(this);
+        this.search = this.search.bind(this);
+    }
+
+    setSearch(event, value) {
+        this.setState({
+            search: event.target.value
+        })
+    }
+
+    search(element) {
+        let lowercaseSearch = this.state.search.toLowerCase();
+        if (element.config.name.toLowerCase().includes(lowercaseSearch)) {
+            return true;
+        }
+
+        if (element.sources.toString().toLowerCase().includes(lowercaseSearch)) {
+            return true;
+        }
+
+        return false;
     }
 
     render() {
         return (
             <div>
-                <section class="jumbotron text-center">
-                    <div class="container">
+                <section className="jumbotron text-center">
+                    <div className="container">
                         <h1>New Relic - Dashboards</h1>
-                        <p class="lead text-muted">Library of selected New Relic dashboards with their dependencies.</p>
+                        <p className="lead text-muted">Library of selected New Relic dashboards with their dependencies.</p>
                     </div>
                 </section>
 
-                <div className="album py-5 bg-light">
+                <div className="album bg-light">
                     <div className="container" id="root">
-                        <div className="row">
-                        {data.dashboards.map((dashboard, i) => {
-                            return (<Preview dashboard={dashboard} />)
+                        <div className="row py-5">
+                            <input type="text" className="form-control" id="search" aria-describedby="search" placeholder="Search for specific datasource or technology" value={this.state.search} onChange={this.setSearch} />
+                        </div>
+                        <div className="row py-3">
+                        {data.dashboards.filter(this.search).map((dashboard, i) => {
+                            return (<Preview key={dashboard.name} dashboard={dashboard} />)
                         })}
                         </div>
                     </div>
