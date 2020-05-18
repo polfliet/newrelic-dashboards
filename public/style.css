@@ -53,3 +53,7 @@ footer p {
     border: 1px solid #dee2e6;
     border-width: 0 1px 1px 1px;
 }
+
+.sources .badge {
+    margin-right: 5px;
+}

@@ -11,7 +11,7 @@ class Datasource extends React.Component {
 
   render() {
     return (
-        <div>
+        <div className="sources">
             {this.props.sources.map((source, i) => {
                 return (<DatasourceItem source={source} />)
             })}
